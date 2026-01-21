@@ -17,7 +17,10 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.*')">
-                        Categorias
+                        <i class="fas fa-gear mr-1"></i>Categorias
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('tags.show') }}" :active="request()->routeIs('tags.show')">
+                        <i class="fas fa-gear mr-1"></i>Tags
                     </x-nav-link>
                 </div>
             </div>
