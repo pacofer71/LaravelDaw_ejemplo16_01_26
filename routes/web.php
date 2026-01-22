@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Livewire\Cursos\ShowUserCursos;
 use App\Livewire\Tags\ShowTags;
 use App\Models\Curso;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,5 @@ Route::middleware([
     })->name('dashboard');
     Route::resource('categories', CategoryController::class)->except('show')->middleware(AdminMiddleware::class);
     Route::get('tags', ShowTags::class)->middleware(AdminMiddleware::class)->name('tags.show');
+    Route::get('cursos', ShowUserCursos::class)->name('cursos.show');
 });

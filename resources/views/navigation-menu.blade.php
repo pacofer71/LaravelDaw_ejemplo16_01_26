@@ -22,6 +22,9 @@
                     <x-nav-link href="{{ route('tags.show') }}" :active="request()->routeIs('tags.show')">
                         <i class="fas fa-gear mr-1"></i>Tags
                     </x-nav-link>
+                    <x-nav-link href="{{ route('cursos.show') }}" :active="request()->routeIs('cursos.show')">
+                        <i class="fas fa-gear mr-1"></i>Cursos
+                    </x-nav-link>
                 </div>
             </div>
 

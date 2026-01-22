@@ -46,7 +46,12 @@
                                  </div>
                              </td>
                              <td class="px-6 py-5 text-center">
-                                 Botones
+                                <button wire:click="edit({{ $item->id }})">
+                                     <i class="fas fa-edit"></i>
+                                 </button>
+                                 <button wire:click="mostrarConfirmacion({{ $item->id }})">
+                                     <i class="fas fa-trash"></i>
+                                 </button>
                              </td>
                          </tr>
                      @endforeach
@@ -58,4 +63,30 @@
              No se encontró ningúna etiqueta o aun no ha creado ninguna!!
          </x-miscomponentes.advertencia>
      @endif
+     <!-- ------------------------------- Modal para editar ----------------------------- -->
+     @isset($uform->tag)
+      <x-dialog-modal wire:model="openEditar">
+        <x-slot name="title">
+            Editar Etiqueta
+        </x-slot>
+        <x-slot name="content">
+            <x-label for='nombre' value="Nombre" class="mb-1" />
+            <x-input id="nombre" type="text" class="w-full" wire:model="uform.nombre" />
+            <x-input-error for="uform.nombre" />
+            <x-label for='color' value="Color" class="mb-1 mt-4" />
+            <x-input id="color" type="color" class="w-full" wire:model="uform.color" />
+            <x-input-error for="uform.color" />
+        </x-slot>
+        <x-slot name="footer">
+            <div class="flex flex-row-reverse">
+                <x-button class="bg-blue-500 hover:bg-blue-700 text-white" wire:click="updateTag">
+                    <i class="fas fa-save mr-1"></i>EDITAR
+                </x-button>
+                <x-button class="bg-red-500 hover:bg-ted-700 text-white mr-2" wire:click="cancelar">
+                    <i class="fas fa-xmark mr-1"></i>CANCELAR
+                </x-button>
+            </div>
+        </x-slot>
+    </x-dialog-modal>
+    @endisset
  </x-miscomponentes.base>

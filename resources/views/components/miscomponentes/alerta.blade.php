@@ -1,7 +1,6 @@
 @session('mensaje')
     <script>
         Swal.fire({
-            position: "top-end",
             icon: "success",
             title: "{{ session('mensaje') }}",
             showConfirmButton: false,
