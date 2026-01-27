@@ -67,6 +67,7 @@
             });
         }
         Livewire.on('evtBorrarTag', ({destino})=>mostrarDialogoBorrado(destino));
+        Livewire.on('evtBorrarCurso', ({destino})=>mostrarDialogoBorrado(destino));
 
         Livewire.on('mensaje', txt => {
             Swal.fire({

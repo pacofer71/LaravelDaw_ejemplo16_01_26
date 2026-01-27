@@ -31,7 +31,7 @@ class CreateUserCursoForm extends Form
     public function crearCursoForm(){
         $datos=$this->validate();
         $datos['user_id']=Auth::id();
-        $datos['imagen']=$this->imagen?->store('imagenes/curso') ?? 'imagenes/curso/default.jpg';
+        $datos['imagen']=$this->imagen?->store('imagenes/cursos') ?? 'imagenes/cursos/default.jpg';
         $curso=Curso::create($datos);
         $curso->tags()->attach($this->tags);
 
