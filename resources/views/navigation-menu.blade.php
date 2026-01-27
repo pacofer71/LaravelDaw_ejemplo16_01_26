@@ -13,6 +13,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @auth
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -24,6 +25,10 @@
                     </x-nav-link>
                     <x-nav-link href="{{ route('cursos.show') }}" :active="request()->routeIs('cursos.show')">
                         <i class="fas fa-gear mr-1"></i>Cursos
+                    </x-nav-link>
+                    @endauth
+                    <x-nav-link href="{{ route('contacto.show') }}" :active="request()->routeIs('contacto.show')">
+                        <i class="fas fa-envelope mr-1"></i>Contáctanos
                     </x-nav-link>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Emails\ContactoController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Livewire\Cursos\ShowUserCursos;
 use App\Livewire\Tags\ShowTags;
@@ -24,3 +25,6 @@ Route::middleware([
     Route::get('tags', ShowTags::class)->middleware(AdminMiddleware::class)->name('tags.show');
     Route::get('cursos', ShowUserCursos::class)->name('cursos.show');
 });
+// Rutas para el formulario de contacto
+Route::get('contacto', [ContactoController::class, 'pintarFormularioContacto'])->name('contacto.show');
+Route::post('contacto', [ContactoController::class, 'procesarFormularioContacto'])->name('contacto.send');
