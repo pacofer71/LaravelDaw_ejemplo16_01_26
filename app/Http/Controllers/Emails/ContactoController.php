@@ -21,8 +21,8 @@ class ContactoController extends Controller
             Mail::to('soporte@mitio.com')->send(new ContactoMailable($datos));
             return redirect()->route('inicio')->with('mensaje', 'Correo enviado, gracias por sus sugerencias');
         }catch(\Exception $ex){
-            dd($ex->getMessage());
-            //return redirect()->route('inicio')->with('mensaje', 'No se pudo enviar el mensaje, intentelo más tarde');
+            //dd($ex->getMessage());
+            return redirect()->route('inicio')->with('mensaje', 'No se pudo enviar el mensaje, intentelo más tarde');
         }
     }
 

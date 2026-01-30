@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -16,6 +17,7 @@ class ContactoMailable extends Mailable
     /**
      * Create a new message instance.
      */
+    // public array $datos;
     public function __construct(public array $datos)
     {
         //
@@ -27,7 +29,12 @@ class ContactoMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contacto Mailable',
+            subject: 'Formulario de Contacto',
+            from: new Address('noreply@misitio.com', 'Soporte del Sitio'),
+            replyTo: [
+                new Address($this->datos['email'], $this->datos['nombre'] ?? 'Usuario generico')
+            ],
+
         );
     }
 
@@ -37,7 +44,7 @@ class ContactoMailable extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            markdown: 'vistasCorreo.vistabuena',
         );
     }
 
